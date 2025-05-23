@@ -12,9 +12,9 @@ class TaskListScreen extends StatefulWidget {
 class _TaskListScreenState extends State<TaskListScreen> {
   TextEditingController textController = TextEditingController();
   List<Task> tasks = [
-    Task(title: "Learn Flutter Basics"),
-    Task(title: "Build a Simple App"),
-    Task(title: "Publish to GitHub"),
+    Task(title: "Learn Flutter Basics", isCompleted: true),
+    Task(title: "Build a Simple App" , isCompleted: true),
+    Task(title: "Publish to GitHub" , isCompleted: true),
     Task(title: "Share with friends"),
   ];
 
@@ -41,7 +41,7 @@ class _TaskListScreenState extends State<TaskListScreen> {
                 ElevatedButton(
                   onPressed: () {
                     setState(() {
-                     if (textController.text.isNotEmpty) {
+                      if (textController.text.isNotEmpty) {
                         tasks.add(Task(title: textController.text));
                         textController.clear();
                       }
@@ -59,7 +59,31 @@ class _TaskListScreenState extends State<TaskListScreen> {
                     : ListView.builder(
                       itemBuilder: (context, index) {
                         return ListTile(
-                          title: Text(tasks[index].title),
+                          leading: GestureDetector(
+                            onTap: () {
+                              setState(() {
+                                tasks[index].isCompleted =
+                                !tasks[index].isCompleted;
+                              });
+                            },
+                            child: Icon(
+                              tasks[index].isCompleted
+                                  ? Icons.check_box
+                                  : Icons.check_box_outline_blank,
+                              color: tasks[index].isCompleted
+                                  ? Colors.green
+                                  : Colors.grey,
+                            ),
+                          ),
+                          title:
+                          tasks[index].isCompleted
+                              ? Text(
+                            tasks[index].title,
+                            style: const TextStyle(
+                              decoration: TextDecoration.lineThrough,
+                            ),
+                          )
+                              : Text(tasks[index].title),
                           trailing: IconButton(
                             icon: const Icon(Icons.delete),
                             onPressed: () {
