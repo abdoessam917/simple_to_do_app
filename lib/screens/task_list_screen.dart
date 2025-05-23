@@ -13,8 +13,8 @@ class _TaskListScreenState extends State<TaskListScreen> {
   TextEditingController textController = TextEditingController();
   List<Task> tasks = [
     Task(title: "Learn Flutter Basics", isCompleted: true),
-    Task(title: "Build a Simple App" , isCompleted: true),
-    Task(title: "Publish to GitHub" , isCompleted: true),
+    Task(title: "Build a Simple App", isCompleted: true),
+    Task(title: "Publish to GitHub", isCompleted: true),
     Task(title: "Share with friends"),
   ];
 
@@ -62,41 +62,47 @@ class _TaskListScreenState extends State<TaskListScreen> {
                           onTap: () {
                             setState(() {
                               tasks[index].isCompleted =
-                              !tasks[index].isCompleted;
+                                  !tasks[index].isCompleted;
                             });
                           },
                           leading: GestureDetector(
                             onTap: () {
                               setState(() {
                                 tasks[index].isCompleted =
-                                !tasks[index].isCompleted;
+                                    !tasks[index].isCompleted;
                               });
                             },
                             child: Icon(
                               tasks[index].isCompleted
                                   ? Icons.check_box
                                   : Icons.check_box_outline_blank,
-                              color: tasks[index].isCompleted
-                                  ? Colors.green
-                                  : Colors.grey,
+                              color:
+                                  tasks[index].isCompleted
+                                      ? Colors.green
+                                      : Colors.grey,
                             ),
                           ),
                           title:
-                          tasks[index].isCompleted
-                              ? Text(
-                            tasks[index].title,
-                            style: const TextStyle(
-                              decoration: TextDecoration.lineThrough,
-                            ),
-                          )
-                              : Text(tasks[index].title),
-                          trailing: IconButton(
-                            icon: const Icon(Icons.delete),
-                            onPressed: () {
-                              setState(() {
-                                tasks.removeAt(index);
-                              });
-                            },
+                              tasks[index].isCompleted
+                                  ? Text(
+                                    tasks[index].title,
+                                    style: const TextStyle(
+                                      decoration: TextDecoration.lineThrough,
+                                    ),
+                                  )
+                                  : Text(tasks[index].title),
+                          trailing: Row(
+                            mainAxisSize: MainAxisSize.min,
+                            children: [
+                              IconButton(
+                                icon: const Icon(Icons.delete,color: Colors.red,),
+                                onPressed: () {
+                                  setState(() {
+                                    tasks.removeAt(index);
+                                  });
+                                },
+                              )
+                            ],
                           ),
                         );
                       },
