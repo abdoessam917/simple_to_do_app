@@ -59,6 +59,12 @@ class _TaskListScreenState extends State<TaskListScreen> {
                     : ListView.builder(
                       itemBuilder: (context, index) {
                         return ListTile(
+                          onTap: () {
+                            setState(() {
+                              tasks[index].isCompleted =
+                              !tasks[index].isCompleted;
+                            });
+                          },
                           leading: GestureDetector(
                             onTap: () {
                               setState(() {
