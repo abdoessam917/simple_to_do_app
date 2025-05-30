@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:simple_to_do_app/theme/app_theme.dart';
 
 import 'screens/task_list_screen.dart';
 
@@ -14,6 +15,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      theme: AppTheme.lightTheme,
       home: TaskListScreen(),
     );
   }
