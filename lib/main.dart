@@ -1,20 +1,39 @@
 import 'package:flutter/material.dart';
-
+import 'theme/app_theme.dart';
 import 'screens/task_list_screen.dart';
 
-
 void main() {
-  runApp(const MyApp());
+  runApp(MyApp());
 }
 
-class MyApp extends StatelessWidget {
+class MyApp extends StatefulWidget {
+  static bool isDarkModeEnabled = true;
+
   const MyApp({super.key});
 
-  // This widget is the root of your application.
+  static void toggleTheme() {
+    isDarkModeEnabled = !isDarkModeEnabled;
+  }
+
+  @override
+  State<MyApp> createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: TaskListScreen(),
+      debugShowCheckedModeBanner: false,
+      home: TaskListScreen(
+        onThemeChanged: () {
+          setState(() {
+            MyApp.toggleTheme();
+          });
+        },
+      ),
+      darkTheme: AppTheme.darkTheme,
+      theme: AppTheme.lightTheme,
+      themeMode: MyApp.isDarkModeEnabled ? ThemeMode.dark : ThemeMode.light,
     );
   }
 }
