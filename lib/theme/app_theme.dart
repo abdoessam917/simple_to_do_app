@@ -20,6 +20,16 @@ class AppTheme {
         shape: const CircleBorder(side: BorderSide(color: Colors.white, width: 2)),
       ),
     ),
+    textTheme: const TextTheme(
+      titleLarge: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+      bodyMedium: TextStyle(fontSize: 16, color: Colors.black87),
+    ),
+    textButtonTheme: TextButtonThemeData(
+      style: TextButton.styleFrom(
+        foregroundColor: Colors.blue,
+        textStyle: const TextStyle(fontSize: 16),
+      ),
+    ),
   );
 
   static ThemeData darkTheme = ThemeData(
@@ -42,6 +52,16 @@ class AppTheme {
       filled: true,
       fillColor: Colors.grey[800],
       hintStyle: const TextStyle(color: Colors.white70),
+    ),
+    textTheme: const TextTheme(
+      titleLarge: TextStyle(fontSize: 24, fontWeight: FontWeight.bold, color: Colors.white),
+      bodyMedium: TextStyle(fontSize: 16, color: Colors.white70),
+    ),
+    textButtonTheme: TextButtonThemeData(
+      style: TextButton.styleFrom(
+        foregroundColor: Colors.blue,
+        textStyle: const TextStyle(fontSize: 16),
+      ),
     ),
   );
 }
