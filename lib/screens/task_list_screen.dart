@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:simple_to_do_app/theme/app_theme.dart';
 
-import '../model/task.dart';
+import '../models/task.dart';
 
 class TaskListScreen extends StatefulWidget {
-  const TaskListScreen({super.key});
+  final VoidCallback onThemeChanged;
+
+  const TaskListScreen({super.key, required this.onThemeChanged});
 
   @override
   State<TaskListScreen> createState() => _TaskListScreenState();
@@ -21,7 +24,20 @@ class _TaskListScreenState extends State<TaskListScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('My Tasks')),
+      appBar: AppBar(
+        actions: [
+          IconButton(
+            color: AppTheme.isDarkMode ? Colors.grey : Colors.yellow,
+            icon: Icon(
+              AppTheme.isDarkMode ? Icons.dark_mode : Icons.light_mode,
+            ),
+            onPressed: () {
+              widget.onThemeChanged();
+            },
+          ),
+        ],
+        title: const Text('My Tasks'),
+      ),
       body: Column(
         children: [
           Padding(
@@ -95,13 +111,16 @@ class _TaskListScreenState extends State<TaskListScreen> {
                             mainAxisSize: MainAxisSize.min,
                             children: [
                               IconButton(
-                                icon: const Icon(Icons.delete,color: Colors.red,),
+                                icon: const Icon(
+                                  Icons.delete,
+                                  color: Colors.red,
+                                ),
                                 onPressed: () {
                                   setState(() {
                                     tasks.removeAt(index);
                                   });
                                 },
-                              )
+                              ),
                             ],
                           ),
                         );
