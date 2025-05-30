@@ -1,13 +1,6 @@
 import 'package:flutter/material.dart';
 
 class AppTheme {
-
-  static bool isDarkMode = false;
-
-  static void toggleTheme() {
-    isDarkMode = !isDarkMode;
-  }
-
   static ThemeData lightTheme = ThemeData(
     primaryColor: Colors.blue,
     primarySwatch: Colors.blue,
@@ -15,6 +8,7 @@ class AppTheme {
     appBarTheme: const AppBarTheme(
       backgroundColor: Colors.blue,
       foregroundColor: Colors.white,
+      elevation: 4,
     ),
     inputDecorationTheme: InputDecorationTheme(
       border: OutlineInputBorder(borderRadius: BorderRadius.circular(8)),
@@ -34,6 +28,7 @@ class AppTheme {
     appBarTheme: const AppBarTheme(
       backgroundColor: Colors.black,
       foregroundColor: Colors.white,
+      elevation: 4,
     ),
     elevatedButtonTheme: ElevatedButtonThemeData(
       style: ElevatedButton.styleFrom(
@@ -49,7 +44,4 @@ class AppTheme {
       hintStyle: const TextStyle(color: Colors.white70),
     ),
   );
-
-
-
 }
